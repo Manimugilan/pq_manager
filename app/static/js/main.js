@@ -113,8 +113,8 @@ if (strengthInput) {
                 const csrf = document.querySelector('meta[name="csrf-token"]')?.content || '';
                 const res = await fetch('/api/strength', {
                     method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json', 
+                    headers: {
+                        'Content-Type': 'application/json',
                         'X-Requested-With': 'XMLHttpRequest',
                         'X-CSRFToken': csrf
                     },
@@ -203,8 +203,9 @@ if (bioLoginBtn) {
             const csrf = document.querySelector('meta[name="csrf-token"]')?.content || '';
             const beginRes = await fetch('/biometric/login/begin', {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
                     'X-CSRFToken': csrf
                 },
                 body: JSON.stringify({ username })
@@ -221,8 +222,9 @@ if (bioLoginBtn) {
             const credential = await navigator.credentials.get({ publicKey: options });
             const completeRes = await fetch('/biometric/login/complete', {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
                     'X-CSRFToken': csrf
                 },
                 body: JSON.stringify(credentialToJSON(credential))
@@ -246,9 +248,12 @@ if (bioRegBtn) {
             bioRegBtn.disabled = true;
             bioRegBtn.textContent = '⏳ Registering...';
             const csrf = document.querySelector('meta[name="csrf-token"]')?.content || '';
-            const beginRes = await fetch('/biometric/register/begin', { 
+            const beginRes = await fetch('/biometric/register/begin', {
                 method: 'POST',
-                headers: { 'X-CSRFToken': csrf }
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': csrf
+                }
             });
             const options = await beginRes.json();
 
@@ -261,8 +266,9 @@ if (bioRegBtn) {
             const credential = await navigator.credentials.create({ publicKey: options });
             const completeRes = await fetch('/biometric/register/complete', {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
                     'X-CSRFToken': csrf
                 },
                 body: JSON.stringify(credentialToJSON(credential))
