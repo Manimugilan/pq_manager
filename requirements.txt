@@ -12,4 +12,3 @@ pillow==10.0.0
 webauthn==1.11.1
 Werkzeug==2.3.7
 psycopg2-binary
-
