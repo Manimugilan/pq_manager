@@ -11,5 +11,5 @@ qrcode[pil]==7.4.2
 pillow==10.0.0
 webauthn==1.11.1
 Werkzeug==2.3.7
-liboqs-python
 psycopg2-binary
+
