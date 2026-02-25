@@ -1,0 +1,95 @@
+# te translations for PQ Vault
+# charset=UTF-8
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: te\n"
+
+msgid "Dashboard"
+msgstr "డాష్‌బోర్డ్"
+
+msgid "My Vault"
+msgstr "నా వాల్ట్"
+
+msgid "entries"
+msgstr "ఎంట్రీలు"
+
+msgid "Add Password"
+msgstr "పాస్‌వర్డ్ జోడించు"
+
+msgid "Search vault..."
+msgstr "వెతుకు..."
+
+msgid "View"
+msgstr "చూడు"
+
+msgid "Edit"
+msgstr "సవరించు"
+
+msgid "Share"
+msgstr "పంచుకో"
+
+msgid "Your vault is empty"
+msgstr "మీ వాల్ట్ ఖాళీగా ఉంది"
+
+msgid "Back"
+msgstr "వెనుకకు"
+
+msgid "Website"
+msgstr "వెబ్‌సైట్"
+
+msgid "Username / Email"
+msgstr "వినియోగదారు పేరు / ఇమెయిల్"
+
+msgid "Password"
+msgstr "పాస్‌వర్డ్"
+
+msgid "Notes"
+msgstr "గమనికలు"
+
+msgid "Cancel"
+msgstr "రద్దు"
+
+msgid "Save"
+msgstr "సేవ్"
+
+msgid "Save Changes"
+msgstr "మార్పులను సేవ్ చేయి"
+
+msgid "Login"
+msgstr "లాగిన్"
+
+msgid "Register"
+msgstr "నమోదు"
+
+msgid "Username"
+msgstr "వినియోగదారు పేరు"
+
+msgid "Sign In"
+msgstr "సైన్ ఇన్"
+
+msgid "Don't have an account?"
+msgstr "అకౌంట్ లేదా?"
+
+msgid "Logout"
+msgstr "లాగ్ అవుట్"
+
+msgid "Vault"
+msgstr "వాల్ట్"
+
+msgid "Security"
+msgstr "భద్రత"
+
+msgid "Invalid username or password."
+msgstr "చెల్లని పేరు లేదా పాస్‌వర్డ్."
+
+msgid "Password added successfully!"
+msgstr "పాస్‌వర్డ్ జోడించబడింది!"
+
+msgid "Two-Factor Authentication"
+msgstr "రెండు-కారక ప్రమాణీకరణ"
+
+msgid "Unauthorized."
+msgstr "అనధికారం."
+

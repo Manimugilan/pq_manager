@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Setup 2FA') }} – PQ Vault{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">🔑 {{ _('Two-Factor Authentication') }}</h1>
+        <p class="page-sub">{{ _('Secure your account with TOTP and biometrics') }}</p>
+    </div>
+</div>
+
+{% if setup_complete %}
+<div class="form-card" style="text-align:center">
+    <div style="font-size:3rem;margin-bottom:1rem">✅</div>
+    <h2>{{ _('2FA Enabled!') }}</h2>
+    <p style="color:var(--text-3);margin:.5rem 0 1.5rem">{{ _('Save these recovery codes somewhere safe. Each can only
+        be used once.') }}</p>
+    <div class="recovery-codes">
+        {% for code in recovery_codes %}
+        <div class="recovery-code">{{ code }}</div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('main.index') }}" class="btn btn-primary" style="margin-top:1.5rem">{{ _('Go to Dashboard')
+        }}</a>
+</div>
+
+{% else %}
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+
+    <!-- TOTP Setup Card -->
+    <div class="form-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1.25rem">📱 {{ _('Authenticator App') }}</h2>
+        <div style="text-align:center;margin-bottom:1.25rem">
+            {% if qr_b64 %}
+            <div class="qr-container">
+                <img src="data:image/png;base64,{{ qr_b64 }}" alt="QR Code">
+            </div>
+            {% endif %}
+            <p style="color:var(--text-3);font-size:.8rem;margin:.75rem 0 .5rem">{{ _('Scan with Google Authenticator,
+                Authy, etc.') }}</p>
+            <div
+                style="font-family:monospace;font-size:.8rem;background:var(--surface-2);padding:.5rem .75rem;border-radius:8px;word-break:break-all">
+                {{ secret }}</div>
+        </div>
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label class="form-label">{{ _('Enter 6-digit verification code') }}</label>
+                <input type="text" name="code" id="password-input" class="form-control" placeholder="000000"
+                    maxlength="6" pattern="[0-9]{6}" required autofocus
+                    style="text-align:center;font-size:1.4rem;letter-spacing:.4rem;font-family:monospace">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">✅ {{ _('Enable 2FA') }}</button>
+        </form>
+    </div>
+
+    <!-- Biometric Card -->
+    <div class="form-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1.25rem">🖐 {{ _('Biometric Authentication') }}</h2>
+        <p style="color:var(--text-3);font-size:.875rem;margin-bottom:1.5rem">
+            {{ _('Register your fingerprint or face to log in instantly without a password.') }}
+        </p>
+
+        <button id="biometric-register-btn" class="btn-biometric" type="button">
+            <span class="fingerprint-icon">🖐</span>
+            {{ _('Register Fingerprint / Face') }}
+        </button>
+
+        <div id="bio-status" style="font-size:.875rem;margin-top:.75rem;min-height:1.5rem;text-align:center"></div>
+
+        <div
+            style="margin-top:1.5rem;padding:1rem;background:rgba(99,102,241,0.06);border-radius:10px;border:1px solid rgba(99,102,241,0.15)">
+            <p style="font-size:.8rem;color:var(--text-3)">
+                ℹ️ {{ _('Biometric login uses WebAuthn (FIDO2). Your biometric data never leaves your device.') }}
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endif %}
+{% endblock %}

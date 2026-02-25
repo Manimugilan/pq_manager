@@ -1,0 +1,95 @@
+# kn translations for PQ Vault
+# charset=UTF-8
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: kn\n"
+
+msgid "Dashboard"
+msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+msgid "My Vault"
+msgstr "ನನ್ನ ವಾಲ್ಟ್"
+
+msgid "entries"
+msgstr "ನಮೂದುಗಳು"
+
+msgid "Add Password"
+msgstr "ಪಾಸ್‌ವರ್ಡ್ ಸೇರಿಸಿ"
+
+msgid "Search vault..."
+msgstr "ಹುಡುಕಿ..."
+
+msgid "View"
+msgstr "ನೋಡಿ"
+
+msgid "Edit"
+msgstr "ಸಂಪಾದಿಸಿ"
+
+msgid "Share"
+msgstr "ಹಂಚಿಕೊಳ್ಳಿ"
+
+msgid "Your vault is empty"
+msgstr "ನಿಮ್ಮ ವಾಲ್ಟ್ ಖಾಲಿಯಾಗಿದೆ"
+
+msgid "Back"
+msgstr "ಹಿಂದೆ"
+
+msgid "Website"
+msgstr "ವೆಬ್‌ಸೈಟ್"
+
+msgid "Username / Email"
+msgstr "ಬಳಕೆದಾರ ಹೆಸರು / ಇಮೇಲ್"
+
+msgid "Password"
+msgstr "ಪಾಸ್‌ವರ್ಡ್"
+
+msgid "Notes"
+msgstr "ಟಿಪ್ಪಣಿಗಳು"
+
+msgid "Cancel"
+msgstr "ರದ್ದು"
+
+msgid "Save"
+msgstr "ಉಳಿಸಿ"
+
+msgid "Save Changes"
+msgstr "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ"
+
+msgid "Login"
+msgstr "ಲಾಗಿನ್"
+
+msgid "Register"
+msgstr "ನೋಂದಣಿ"
+
+msgid "Username"
+msgstr "ಬಳಕೆದಾರ ಹೆಸರು"
+
+msgid "Sign In"
+msgstr "ಸೈನ್ ಇನ್"
+
+msgid "Don't have an account?"
+msgstr "ಖಾತೆ ಇಲ್ಲವೇ?"
+
+msgid "Logout"
+msgstr "ಲಾಗ್ ಔಟ್"
+
+msgid "Vault"
+msgstr "ವಾಲ್ಟ್"
+
+msgid "Security"
+msgstr "ಭದ್ರತೆ"
+
+msgid "Invalid username or password."
+msgstr "ಅಮಾನ್ಯ ಬಳಕೆದಾರ ಹೆಸರು ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್."
+
+msgid "Password added successfully!"
+msgstr "ಪಾಸ್‌ವರ್ಡ್ ಸೇರಿಸಲಾಗಿದೆ!"
+
+msgid "Two-Factor Authentication"
+msgstr "ಎರಡು-ಅಂಶ ದೃಢೀಕರಣ"
+
+msgid "Unauthorized."
+msgstr "ಅನಧಿಕೃತ."
+

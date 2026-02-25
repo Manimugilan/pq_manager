@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'en') }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{% block title %}PQ Password Manager{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- Flash Messages -->
+<div class="flash-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}
+      <div class="alert alert-{{ cat }}">
+        {% if cat == 'success' %}✅{% elif cat == 'danger' %}❌{% elif cat == 'warning' %}⚠️{% else %}ℹ️{% endif %}
+        {{ msg }}
+      </div>
+    {% endfor %}
+  {% endwith %}
+</div>
+
+{% if current_user.is_authenticated %}
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🔐</div>
+      <span>PQ Vault</span>
+    </div>
+
+    <p class="nav-label">{{ _('Vault') }}</p>
+    <a href="{{ url_for('main.index') }}"       class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">
+      <span class="nav-icon">🏠</span><span>{{ _('Dashboard') }}</span>
+    </a>
+    <a href="{{ url_for('main.add_password') }}" class="nav-link {% if request.endpoint == 'main.add_password' %}active{% endif %}">
+      <span class="nav-icon">➕</span><span>{{ _('Add Password') }}</span>
+    </a>
+    <a href="{{ url_for('main.backup') }}"       class="nav-link {% if request.endpoint == 'main.backup' %}active{% endif %}">
+      <span class="nav-icon">💾</span><span>{{ _('Backup & Restore') }}</span>
+    </a>
+
+    <p class="nav-label" style="margin-top:1.5rem">{{ _('Security') }}</p>
+    <a href="{{ url_for('auth.setup_2fa') }}"    class="nav-link {% if request.endpoint == 'auth.setup_2fa' %}active{% endif %}">
+      <span class="nav-icon">🔑</span><span>{{ _('Setup 2FA') }}</span>
+    </a>
+
+    <div class="sidebar-footer">
+      <!-- Language Selector -->
+      <div class="lang-selector" style="flex-wrap:wrap; margin-bottom:1rem">
+        {% set langs = {'en':'EN','ta':'தமிழ்','hi':'हि','te':'తె','kn':'ಕ'} %}
+        {% for code, label in langs.items() %}
+          <a href="{{ url_for('auth.set_language', lang=code) }}"
+             class="lang-btn {% if session.get('lang','en') == code %}active{% endif %}">{{ label }}</a>
+        {% endfor %}
+      </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem">
+          {{ current_user.username[0].upper() }}
+        </div>
+        <div>
+          <div style="font-size:0.8rem;font-weight:600;color:var(--text-1)">{{ current_user.username }}</div>
+          <a href="{{ url_for('auth.logout') }}" style="font-size:0.7rem;color:var(--text-3);text-decoration:none">{{ _('Logout') }}</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+</div>
+{% else %}
+  {% block auth_content %}{% endblock %}
+{% endif %}
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

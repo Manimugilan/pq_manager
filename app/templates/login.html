@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Login') }} — PQ Vault{% endblock %}
+
+{% block auth_content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <div class="logo-badge">🔐</div>
+            <h1 class="auth-title">{{ _('Welcome Back') }}</h1>
+            <p class="auth-subtitle">{{ _('Sign in to your secure vault') }}</p>
+        </div>
+
+        <!-- Biometric Login -->
+        <button id="biometric-login-btn" class="btn-biometric" type="button">
+            <span class="fingerprint-icon">🖐</span>
+            {{ _('Login with Fingerprint / Face') }}
+        </button>
+
+        <div class="divider">{{ _('or continue with password') }}</div>
+
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label for="username">{{ _('Username') }}</label>
+                <input type="text" id="username" name="username" class="form-control"
+                    placeholder="{{ _('Enter your username') }}" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">{{ _('Password') }}</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" class="form-control"
+                        placeholder="{{ _('Enter your password') }}" required autocomplete="current-password">
+                    <button type="button" class="toggle-password">👁</button>
+                </div>
+                <div style="text-align:right; margin-top:0.25rem">
+                    <a href="{{ url_for('auth.forgot_password') }}" style="font-size:0.75rem;color:var(--text-3);text-decoration:none">
+                        {{ _('Forgot Password?') }}
+                    </a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.85rem">
+                🔓 {{ _('Sign In') }}
+            </button>
+        </form>
+
+        <p style="text-align:center; margin-top:1.5rem; font-size:0.875rem; color:var(--text-2)">
+            {{ _("Don't have an account?") }}
+            <a href="{{ url_for('auth.register') }}" style="color:var(--accent);text-decoration:none;font-weight:600">
+                {{ _('Register') }}
+            </a>
+        </p>
+
+        <!-- Language Selector -->
+        <div class="lang-selector" style="justify-content:center;margin-top:1.25rem;flex-wrap:wrap">
+            {% set langs = {'en':'EN','ta':'தமிழ்','hi':'हि','te':'తె','kn':'ಕ'} %}
+            {% for code, label in langs.items() %}
+            <a href="{{ url_for('auth.set_language', lang=code) }}"
+                class="lang-btn {% if session.get('lang','en') == code %}active{% endif %}">{{ label }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,149 @@
+# hi translations for PQ Vault
+# charset=UTF-8
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: hi\n"
+
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+msgid "My Vault"
+msgstr "मेरी तिजोरी"
+
+msgid "entries"
+msgstr "प्रविष्टियाँ"
+
+msgid "Add Password"
+msgstr "पासवर्ड जोड़ें"
+
+msgid "Search vault..."
+msgstr "खोजें..."
+
+msgid "View"
+msgstr "देखें"
+
+msgid "Edit"
+msgstr "संपादित करें"
+
+msgid "Share"
+msgstr "साझा करें"
+
+msgid "Your vault is empty"
+msgstr "आपकी तिजोरी खाली है"
+
+msgid "Add your first password to get started."
+msgstr "शुरू करने के लिए अपना पहला पासवर्ड जोड़ें।"
+
+msgid "Shared With Me"
+msgstr "मेरे साथ साझा"
+
+msgid "Encrypted with post-quantum Kyber"
+msgstr "पोस्ट-क्वांटम Kyber से एन्क्रिप्टेड"
+
+msgid "Back"
+msgstr "वापस"
+
+msgid "Website"
+msgstr "वेबसाइट"
+
+msgid "Username / Email"
+msgstr "उपयोगकर्ता नाम / ईमेल"
+
+msgid "Password"
+msgstr "पासवर्ड"
+
+msgid "Notes"
+msgstr "नोट्स"
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Save"
+msgstr "सहेजें"
+
+msgid "Save Changes"
+msgstr "परिवर्तन सहेजें"
+
+msgid "Generate"
+msgstr "उत्पन्न करें"
+
+msgid "Symbols"
+msgstr "प्रतीक"
+
+msgid "Login"
+msgstr "लॉगिन"
+
+msgid "Register"
+msgstr "पंजीकरण"
+
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+msgid "Sign In"
+msgstr "साइन इन"
+
+msgid "Don't have an account?"
+msgstr "खाता नहीं है?"
+
+msgid "Logout"
+msgstr "लॉगआउट"
+
+msgid "Setup 2FA"
+msgstr "2FA सेटअप"
+
+msgid "Vault"
+msgstr "तिजोरी"
+
+msgid "Security"
+msgstr "सुरक्षा"
+
+msgid "Backup & Restore"
+msgstr "बैकअप"
+
+msgid "Invalid username or password."
+msgstr "अमान्य उपयोगकर्ता नाम या पासवर्ड।"
+
+msgid "Account created! Please log in."
+msgstr "खाता बनाया गया! लॉगिन करें।"
+
+msgid "Password added successfully!"
+msgstr "पासवर्ड सफलतापूर्वक जोड़ा गया!"
+
+msgid "Entry updated."
+msgstr "प्रविष्टि अपडेट की गई।"
+
+msgid "Entry deleted."
+msgstr "प्रविष्टि हटाई गई।"
+
+msgid "Confirm Password"
+msgstr "पासवर्ड की पुष्टि करें"
+
+msgid "Create Account"
+msgstr "खाता बनाएं"
+
+msgid "All fields are required."
+msgstr "सभी फ़ील्ड आवश्यक हैं।"
+
+msgid "Passwords do not match."
+msgstr "पासवर्ड मेल नहीं खाते।"
+
+msgid "Two-Factor Authentication"
+msgstr "दो-कारक प्रमाणीकरण"
+
+msgid "Welcome Back"
+msgstr "वापस स्वागत है"
+
+msgid "Sign in to your secure vault"
+msgstr "अपनी सुरक्षित तिजोरी में साइन इन करें"
+
+msgid "Unauthorized."
+msgstr "अनधिकृत।"
+
+msgid "Leave blank to keep existing password"
+msgstr "मौजूदा पासवर्ड रखने के लिए खाली छोड़ें"
+
+msgid "Optional notes..."
+msgstr "वैकल्पिक नोट्स..."
+

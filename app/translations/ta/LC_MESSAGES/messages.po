@@ -1,0 +1,149 @@
+# ta translations for PQ Vault
+# charset=UTF-8
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ta\n"
+
+msgid "Dashboard"
+msgstr "டாஷ்போர்டு"
+
+msgid "My Vault"
+msgstr "என் பாதுகாப்பு கோட்டை"
+
+msgid "entries"
+msgstr "பதிவுகள்"
+
+msgid "Add Password"
+msgstr "கடவுச்சொல் சேர்"
+
+msgid "Search vault..."
+msgstr "தேடு..."
+
+msgid "View"
+msgstr "பார்"
+
+msgid "Edit"
+msgstr "திருத்து"
+
+msgid "Share"
+msgstr "பகிர்"
+
+msgid "Your vault is empty"
+msgstr "உங்கள் கோட்டை காலியாக உள்ளது"
+
+msgid "Add your first password to get started."
+msgstr "தொடங்க உங்கள் முதல் கடவுச்சொல்லை சேர்க்கவும்."
+
+msgid "Shared With Me"
+msgstr "என்னுடன் பகிரப்பட்டது"
+
+msgid "Encrypted with post-quantum Kyber"
+msgstr "கியூபர் மூலம் குறியாக்கம் செய்யப்பட்டது"
+
+msgid "Back"
+msgstr "பின்"
+
+msgid "Website"
+msgstr "வலைத்தளம்"
+
+msgid "Username / Email"
+msgstr "பயனர்பெயர் / மின்னஞ்சல்"
+
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+msgid "Notes"
+msgstr "குறிப்புகள்"
+
+msgid "Cancel"
+msgstr "ரத்து"
+
+msgid "Save"
+msgstr "சேமி"
+
+msgid "Save Changes"
+msgstr "மாற்றங்களை சேமி"
+
+msgid "Generate"
+msgstr "உருவாக்கு"
+
+msgid "Symbols"
+msgstr "சின்னங்கள்"
+
+msgid "Login"
+msgstr "உள்நுழை"
+
+msgid "Register"
+msgstr "பதிவு"
+
+msgid "Username"
+msgstr "பயனர்பெயர்"
+
+msgid "Sign In"
+msgstr "உள்நுழை"
+
+msgid "Don't have an account?"
+msgstr "கணக்கு இல்லையா?"
+
+msgid "Logout"
+msgstr "வெளியேறு"
+
+msgid "Setup 2FA"
+msgstr "2FA அமைவு"
+
+msgid "Vault"
+msgstr "கோட்டை"
+
+msgid "Security"
+msgstr "பாதுகாப்பு"
+
+msgid "Backup & Restore"
+msgstr "காப்புப்பிரதி"
+
+msgid "Invalid username or password."
+msgstr "தவறான பயனர்பெயர் அல்லது கடவுச்சொல்."
+
+msgid "Account created! Please log in."
+msgstr "கணக்கு உருவாக்கப்பட்டது!"
+
+msgid "Password added successfully!"
+msgstr "கடவுச்சொல் சேர்க்கப்பட்டது!"
+
+msgid "Entry updated."
+msgstr "பதிவு புதுப்பிக்கப்பட்டது."
+
+msgid "Entry deleted."
+msgstr "பதிவு நீக்கப்பட்டது."
+
+msgid "Confirm Password"
+msgstr "கடவுச்சொல்லை உறுதிப்படுத்து"
+
+msgid "Create Account"
+msgstr "கணக்கு உருவாக்கு"
+
+msgid "All fields are required."
+msgstr "அனைத்து புலங்களும் தேவை."
+
+msgid "Passwords do not match."
+msgstr "கடவுச்சொற்கள் பொருந்தவில்லை."
+
+msgid "Two-Factor Authentication"
+msgstr "இரண்டு-காரணி அங்கீகாரம்"
+
+msgid "Welcome Back"
+msgstr "மீண்டும் வரவேற்கிறோம்"
+
+msgid "Sign in to your secure vault"
+msgstr "உங்கள் பாதுகாப்பான கோட்டையில் உள்நுழையுங்கள்"
+
+msgid "Unauthorized."
+msgstr "அங்கீகரிக்கப்படவில்லை."
+
+msgid "Leave blank to keep existing password"
+msgstr "தற்போதைய கடவுச்சொல்லை வைத்திருக்க காலியாக விடவும்"
+
+msgid "Optional notes..."
+msgstr "விருப்பமான குறிப்புகள்..."
+

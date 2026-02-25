@@ -1,0 +1,15 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.3
+Flask-Login==0.6.2
+Flask-WTF==1.1.1
+Flask-Babel==3.1.0
+pycryptodome==3.18.0
+argon2-cffi==23.1.0
+pyotp==2.8.0
+zxcvbn==4.4.28
+qrcode[pil]==7.4.2
+pillow==10.0.0
+webauthn==1.11.1
+Werkzeug==2.3.7
+liboqs-python
+psycopg2-binary

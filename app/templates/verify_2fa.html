@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Verify 2FA') }} – PQ Vault{% endblock %}
+
+{% block auth_content %}
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem">
+    <div class="auth-card">
+        <div style="text-align:center;margin-bottom:1.5rem">
+            <div style="font-size:2.5rem">🔐</div>
+            <h1 style="font-size:1.4rem;font-weight:700;margin:.5rem 0 .25rem">{{ _('Two-Factor Verification') }}</h1>
+            <p style="color:var(--text-3);font-size:.9rem">{{ _('Enter the code from your authenticator app') }}</p>
+        </div>
+
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label class="form-label">{{ _('Authentication Code') }}</label>
+                <input type="text" name="code" class="form-input" placeholder="000000" maxlength="6" pattern="[0-9]{6}"
+                    autofocus style="text-align:center;font-size:1.5rem;letter-spacing:.5rem;font-family:monospace">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem">✅ {{ _('Verify')
+                }}</button>
+
+            <div style="text-align:center;margin-top:1.25rem">
+                <details>
+                    <summary style="cursor:pointer;color:var(--text-3);font-size:.85rem">{{ _('Use recovery code
+                        instead') }}</summary>
+                    <div class="form-group" style="margin-top:.75rem">
+                        <input type="text" name="recovery_code" class="form-input" placeholder="XXXX-XXXX"
+                            style="text-transform:uppercase">
+                    </div>
+                    <button type="submit" class="btn btn-ghost" style="width:100%">{{ _('Verify with Recovery Code')
+                        }}</button>
+                </details>
+            </div>
+        </form>
+
+        <div style="text-align:center;margin-top:1rem">
+            <a href="{{ url_for('auth.login') }}" style="color:var(--text-3);font-size:.85rem;text-decoration:none">← {{
+                _('Back to Login') }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

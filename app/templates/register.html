@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Register') }} — PQ Vault{% endblock %}
+
+{% block auth_content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <div class="logo-badge">🛡️</div>
+            <h1 class="auth-title">{{ _('Create Account') }}</h1>
+            <p class="auth-subtitle">{{ _('Your post-quantum vault awaits') }}</p>
+        </div>
+
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label for="username">{{ _('Username') }}</label>
+                <input type="text" id="username" name="username" class="form-control"
+                    placeholder="{{ _('Choose a username') }}" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">{{ _('Password') }}</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password-input" name="password" class="form-control"
+                        placeholder="{{ _('Create a strong password') }}" required>
+                    <button type="button" class="toggle-password">👁</button>
+                </div>
+                <div class="strength-bar" style="margin-top:0.5rem">
+                    <div id="strength-fill" class="strength-fill" style="width:0"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-top:0.3rem">
+                    <span id="strength-label" style="font-size:0.7rem;color:var(--text-3)"></span>
+                    <span id="crack-time" style="font-size:0.7rem;color:var(--text-3)"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">{{ _('Confirm Password') }}</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                        placeholder="{{ _('Repeat your password') }}" required>
+                    <button type="button" class="toggle-password">👁</button>
+                </div>
+            </div>
+
+            <!-- DEBUG: Recovery Email Field -->
+            <div class="form-group">
+                <label for="email">{{ _('Email (for password recovery)') }}</label>
+                <input type="email" id="email" name="email" class="form-control"
+                    placeholder="{{ _('Enter your email address') }}" required autocomplete="email">
+            </div>
+
+            <div
+                style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:0.85rem;margin-bottom:1.25rem;font-size:0.8rem;color:var(--text-2)">
+                🔐 <strong style="color:var(--accent)">{{ _('Post-Quantum Security') }}</strong>
+                {{ _('A Kyber-512 keypair will be generated for your vault upon registration.') }}
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.85rem">
+                🚀 {{ _('Create Vault') }}
+            </button>
+        </form>
+
+        <p style="text-align:center;margin-top:1.5rem;font-size:0.875rem;color:var(--text-2)">
+            {{ _('Already have an account?') }}
+            <a href="{{ url_for('auth.login') }}" style="color:var(--accent);text-decoration:none;font-weight:600">
+                {{ _('Login') }}
+            </a>
+        </p>
+
+        <!-- Language Selector -->
+        <div class="lang-selector" style="justify-content:center;margin-top:1.25rem;flex-wrap:wrap">
+            {% set langs = {'en':'EN','ta':'தமிழ்','hi':'हि','te':'తె','kn':'ಕ'} %}
+            {% for code, label in langs.items() %}
+            <a href="{{ url_for('auth.set_language', lang=code) }}"
+                class="lang-btn {% if session.get('lang','en') == code %}active{% endif %}">{{ label }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

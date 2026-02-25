@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Dashboard') }} – PQ Vault{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">🏠 {{ _('My Vault') }}</h1>
+        <p class="page-sub">{{ entries|length }} {{ _('entries') }}</p>
+    </div>
+    <div style="display:flex;gap:.75rem;align-items:center">
+        <div class="search-bar">
+            <span>🔍</span>
+            <input type="text" id="vault-search" placeholder="{{ _('Search vault...') }}">
+        </div>
+        <a href="{{ url_for('main.add_password') }}" class="btn btn-primary">➕ {{ _('Add Password') }}</a>
+    </div>
+</div>
+
+{% if entries %}
+<div class="vault-grid">
+    {% for e in entries %}
+    <div class="vault-card" id="entry-{{ e.id }}">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+            <div
+                style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">
+                {{ e.website[0].upper() if e.website else '?' }}
+            </div>
+            <div style="flex:1;min-width:0">
+                <div class="vault-card-site">{{ e.website }}</div>
+                <div class="vault-card-user">{{ e.username or '—' }}</div>
+            </div>
+            <span class="badge badge-strength-{{ e.strength_score }}">{{
+                ['?','Weak','Fair','Good','Strong'][e.strength_score] if e.strength_score is not none else '?' }}</span>
+        </div>
+        <div class="vault-card-actions">
+            <a href="{{ url_for('main.view_password', entry_id=e.id) }}" class="btn btn-sm btn-ghost">👁 {{ _('View')
+                }}</a>
+            <a href="{{ url_for('main.edit_password', entry_id=e.id) }}" class="btn btn-sm btn-ghost">✏️ {{ _('Edit')
+                }}</a>
+            <a href="{{ url_for('main.share_password', entry_id=e.id) }}" class="btn btn-sm btn-ghost">🔗 {{ _('Share')
+                }}</a>
+            <button class="btn btn-sm btn-danger delete-entry-btn" data-id="{{ e.id }}">🗑</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <div class="empty-icon">🔒</div>
+    <h2 style="margin:.75rem 0 .5rem;font-size:1.3rem">{{ _('Your vault is empty') }}</h2>
+    <p style="color:var(--text-3);margin-bottom:1.5rem">{{ _('Add your first password to get started.') }}</p>
+    <a href="{{ url_for('main.add_password') }}" class="btn btn-primary">➕ {{ _('Add Password') }}</a>
+</div>
+{% endif %}
+
+{% if shared %}
+<div class="page-header" style="margin-top:2.5rem">
+    <h2 class="page-title" style="font-size:1.1rem">🔗 {{ _('Shared With Me') }}</h2>
+</div>
+<div class="vault-grid">
+    {% for e in shared %}
+    <div class="vault-card">
+        <div style="display:flex;align-items:center;gap:.75rem">
+            <div
+                style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent-3),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0">
+                {{ e.website[0].upper() if e.website else '?' }}
+            </div>
+            <div>
+                <div class="vault-card-site">{{ e.website }}</div>
+                <div class="vault-card-user">{{ e.username or '—' }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

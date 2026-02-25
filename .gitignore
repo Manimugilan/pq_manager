@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Database
+instance/
+*.db
+
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug/Temp files
+*.txt
+*.log
+wsl_ip.txt
+ip_list.txt
+ip_debug.txt
