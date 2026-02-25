@@ -12,6 +12,11 @@ class Config:
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = True
+    
+    # Secure Session Cookies for HTTPS (Vercel)
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     BABEL_TRANSLATION_DIRECTORIES = 'translations'
