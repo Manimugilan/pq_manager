@@ -10,17 +10,22 @@ from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 
 # ── Kyber (Post-Quantum KEM) ────────────────────────────────────────────────
-try:
-    import oqs
-    # Quick sanity check — instantiate to verify native lib is working
-    _test_kem = oqs.KeyEncapsulation('Kyber512')
-    _test_kem.generate_keypair()
-    _test_kem.free()
-    OQS_AVAILABLE = True
-    print("[PQ Vault] ✅ liboqs Kyber512 available — post-quantum encryption active.")
-except Exception:
-    OQS_AVAILABLE = False
-    print("[PQ Vault] ⚠️  liboqs not available — falling back to AES-256 KEM simulation.")
+import os
+OQS_AVAILABLE = False
+if os.environ.get('VERCEL') != '1':
+    try:
+        import oqs
+        # Quick sanity check — instantiate to verify native lib is working
+        _test_kem = oqs.KeyEncapsulation('Kyber512')
+        _test_kem.generate_keypair()
+        _test_kem.free()
+        OQS_AVAILABLE = True
+        print("[PQ Vault] ✅ liboqs Kyber512 available — post-quantum encryption active.")
+    except Exception:
+        OQS_AVAILABLE = False
+        print("[PQ Vault] ⚠️  liboqs not available — falling back to AES-256 KEM simulation.")
+else:
+    print("[PQ Vault] ☁️  Vercel environment detected — using AES-256 KEM simulation.")
 
 KEM_ALGORITHM = 'Kyber512'
 
