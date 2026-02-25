@@ -11,8 +11,8 @@ from Crypto.Random import get_random_bytes
 
 # ── Kyber (Post-Quantum KEM) ────────────────────────────────────────────────
 import os
-# Robust Vercel detection: check for VERCEL or VERCEL_URL
-IS_VERCEL = 'VERCEL' in os.environ or 'VERCEL_URL' in os.environ
+# Ultra-robust Vercel/Serverless detection
+IS_VERCEL = any(k in os.environ for k in ['VERCEL', 'VERCEL_URL', 'VERCEL_ENV', 'AWS_LAMBDA_FUNCTION_NAME', 'FUNCTION_NAME'])
 
 OQS_AVAILABLE = False
 if not IS_VERCEL:
@@ -24,11 +24,11 @@ if not IS_VERCEL:
         _test_kem.free()
         OQS_AVAILABLE = True
         print("[PQ Vault] ✅ liboqs Kyber512 available — post-quantum encryption active.")
-    except Exception:
+    except (ImportError, Exception):
         OQS_AVAILABLE = False
-        print("[PQ Vault] ⚠️  liboqs not available — falling back to AES-256 KEM simulation.")
+        print("[PQ Vault] ⚠️  liboqs not found or failed — falling back to Simulation mode.")
 else:
-    print("[PQ Vault] ☁️  Vercel environment detected — using AES-256 KEM simulation.")
+    print("[PQ Vault] ☁️  Vercel environment detected — automatically skipping liboqs.")
 
 KEM_ALGORITHM = 'Kyber512'
 
