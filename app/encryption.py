@@ -11,8 +11,11 @@ from Crypto.Random import get_random_bytes
 
 # ── Kyber (Post-Quantum KEM) ────────────────────────────────────────────────
 import os
+# Robust Vercel detection: check for VERCEL or VERCEL_URL
+IS_VERCEL = 'VERCEL' in os.environ or 'VERCEL_URL' in os.environ
+
 OQS_AVAILABLE = False
-if os.environ.get('VERCEL') != '1':
+if not IS_VERCEL:
     try:
         import oqs
         # Quick sanity check — instantiate to verify native lib is working
@@ -173,8 +176,11 @@ def decrypt_private_key(encrypted_b64: str, nonce_b64: str, master_key: bytes) -
     """Decrypt the stored KEM private key. Returns private_key_b64 string."""
     blob  = base64.b64decode(encrypted_b64)
     nonce = base64.b64decode(nonce_b64)
+    
+    # The blob contains: tag (16 bytes) + ciphertext
     tag        = blob[:16]
     ciphertext = blob[16:]
+    
     cipher = AES.new(master_key[:32], AES.MODE_EAX, nonce=nonce)
     return cipher.decrypt_and_verify(ciphertext, tag).decode('utf-8')
 
