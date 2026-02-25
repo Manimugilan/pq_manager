@@ -33,14 +33,16 @@ def create_app():
     from .routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    # Create tables and instance folder (SQLite only)
-    if 'sqlite' in app.config['SQLALCHEMY_DATABASE_URI']:
-        try:
+    # Create tables and instance folder
+    try:
+        if 'sqlite' in app.config['SQLALCHEMY_DATABASE_URI']:
             os.makedirs(app.instance_path)
-        except OSError:
-            pass
+    except OSError:
+        pass
 
-        with app.app_context():
-            db.create_all()
+    with app.app_context():
+        from . import models
+        db.create_all()
+        app.logger.info("Database tables verified/created.")
 
     return app
