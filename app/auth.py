@@ -67,33 +67,40 @@ def register():
             flash(_('Username already taken.'), 'danger')
             return render_template('register.html')
 
-        # Derive master key from password (used to protect the PQ private key)
-        master_key, salt_b64 = derive_master_key(password)
-
-        # Generate Kyber key pair
+        # Wrap registration in try-except for robust error catching on Vercel
         try:
-            pub_key_b64, priv_key_b64 = generate_pq_keypair()
-            enc_priv_b64, nonce_b64   = encrypt_private_key(priv_key_b64, master_key)
-        except RuntimeError as e:
-            # liboqs not installed — skip PQ key generation gracefully
-            pub_key_b64 = enc_priv_b64 = nonce_b64 = None
+            # Derive master key from password (used to protect the PQ private key)
+            master_key, salt_b64 = derive_master_key(password)
 
-        user = User(
-            username=username,
-            email=email,
-            pq_public_key=pub_key_b64,
-            pq_private_key_enc=enc_priv_b64,
-            pq_private_key_nonce=nonce_b64,
-            master_key_salt=salt_b64,
-        )
-        user.set_password(password)
-        # Store the scrypt salt in the 2FA secret field temporarily — or add a dedicated column
-        # For now store it alongside other fields (add master_key_salt column ideally)
-        db.session.add(user)
-        db.session.commit()
+            # Generate Kyber key pair
+            try:
+                pub_key_b64, priv_key_b64 = generate_pq_keypair()
+                enc_priv_b64, nonce_b64   = encrypt_private_key(priv_key_b64, master_key)
+            except Exception as e:
+                # liboqs not installed or fallback failed — skip PQ key generation gracefully
+                current_app.logger.warning(f"PQ Key generation skipped: {str(e)}")
+                pub_key_b64 = enc_priv_b64 = nonce_b64 = None
 
-        flash(_('Account created! Please log in.'), 'success')
-        return redirect(url_for('auth.login'))
+            user = User(
+                username=username,
+                email=email,
+                pq_public_key=pub_key_b64,
+                pq_private_key_enc=enc_priv_b64,
+                pq_private_key_nonce=nonce_b64,
+                master_key_salt=salt_b64,
+            )
+            user.set_password(password)
+            db.session.add(user)
+            db.session.commit()
+
+            flash(_('Account created! Please log in.'), 'success')
+            return redirect(url_for('auth.login'))
+
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Registration failed for {username}: {str(e)}")
+            flash(_('An error occurred during registration. Please try again.'), 'danger')
+            return render_template('register.html')
 
     return render_template('register.html')
 
