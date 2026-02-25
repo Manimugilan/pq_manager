@@ -184,7 +184,6 @@ def share_password(entry_id):
 
 # ── Password Strength API ─────────────────────────────────────────────────────
 @main.route('/api/strength', methods=['POST'])
-@login_required
 def password_strength():
     data     = request.get_json()
     password = data.get('password', '')
